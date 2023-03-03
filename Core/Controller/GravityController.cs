@@ -13,9 +13,9 @@ namespace Core.Controller
         public IField Field { get; private set; }
         public IRenderer Renderer { get; private set; }
 
-        public void CreateField()
+        public void CreateField(float width, float height)
         {
-            Field = new UniverseField();
+            Field = new UniverseField(width, height);
         }
 
         public void CreateRenderer(IRenderer renderer)

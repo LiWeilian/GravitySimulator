@@ -9,12 +9,17 @@ namespace Core.Celestial.Field
 {
     public class BaseField : IField
     {
-        public static float Width { get { return 1200f; } }
-        public static float Height { get { return 600f; } }
+        //public static float Width { get { return 1200f; } }
+        //public static float Height { get { return 600f; } }
         public virtual IBody[] Bodies { get; protected set; }
         public bool BoidDisplayBySpeed { get; protected set; } = true;
 
         protected float _width, _height;
+        public BaseField(float width, float height)
+        {
+            this._width = width;
+            this._height = height;
+        }
 
         public virtual void Advance(float stepSize = 1)
         {
@@ -25,12 +30,12 @@ namespace Core.Celestial.Field
             //}
         }
 
-        public virtual void SetFieldSize(float width, float height)
-        {
-            if (width <= 0 || height <= 0)
-                throw new Exception(
-                    "Wrong size of field");
-            (_width, _height) = (width, height);
-        }
+        //public virtual void SetFieldSize(float width, float height)
+        //{
+        //    if (width <= 0 || height <= 0)
+        //        throw new Exception(
+        //            "Wrong size of field");
+        //    (_width, _height) = (width, height);
+        //}
     }
 }

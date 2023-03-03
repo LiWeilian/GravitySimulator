@@ -18,7 +18,7 @@ namespace Core.Renderer
         {
             base.Render(field);
 
-            DrawField();
+            //DrawField();
             foreach (var body in field.Bodies)
             {
                 DrawTailBoid(body, _boidColor);

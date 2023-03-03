@@ -42,17 +42,17 @@ namespace Core.Renderer
             _paint.Dispose();
         }
 
-        protected void DrawField()
-        {
-            Point pt1 = new Point(0, 0);
-            Point pt2 = new Point(0, BaseField.Height);
-            Point pt3 = new Point(BaseField.Width, BaseField.Height);
-            Point pt4 = new Point(BaseField.Width, 0);
-            DrawLine(pt1, pt2, 2, _wallColor);
-            DrawLine(pt2, pt3, 2, _wallColor);
-            DrawLine(pt3, pt4, 2, _wallColor);
-            DrawLine(pt4, pt1, 2, _wallColor);
-        }
+        //protected void DrawField()
+        //{
+        //    Point pt1 = new Point(0, 0);
+        //    Point pt2 = new Point(0, BaseField.Height);
+        //    Point pt3 = new Point(BaseField.Width, BaseField.Height);
+        //    Point pt4 = new Point(BaseField.Width, 0);
+        //    DrawLine(pt1, pt2, 2, _wallColor);
+        //    DrawLine(pt2, pt3, 2, _wallColor);
+        //    DrawLine(pt3, pt4, 2, _wallColor);
+        //    DrawLine(pt4, pt1, 2, _wallColor);
+        //}
 
         protected void DrawText(string text, float x, float y, Color color)
         {
@@ -88,14 +88,14 @@ namespace Core.Renderer
         protected void DrawTailBoid(IBody body, Color color, bool boidDispBySpeed = true)
         {
 
-            for (var i = 0; i < body.Positions.Count; i++)
-            {
-                var frac = (i + 1f) / body.Positions.Count;
-                var alpha = (byte)(255 * frac * .5);
-                FillCircle(new Point(body.Positions[i].X, body.Positions[i].Y),
-                    body.Size / 2.5f,
-                    new Color(color.R, color.G, color.B, alpha));
-            }
+            //for (var i = 0; i < body.Positions.Count; i++)
+            //{
+            //    var frac = (i + 1f) / body.Positions.Count;
+            //    var alpha = (byte)(255 * frac * .5);
+            //    FillCircle(new Point(body.Positions[i].X, body.Positions[i].Y),
+            //        body.Size / 2.5f,
+            //        new Color(color.R, color.G, color.B, alpha));
+            //}
 
             FillCircle(new Point(body.Position.X, body.Position.Y), body.Size, color);
             //if (boidDispBySpeed)
