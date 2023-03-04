@@ -9,6 +9,8 @@ namespace Core.Celestial.Field
 {
     public interface IField
     {
+        float Width { get; }
+        float Height { get; }
         IBody[] Bodies { get; }
         //void SetFieldSize(float width, float height);
         void Advance(float stepSize = 1);

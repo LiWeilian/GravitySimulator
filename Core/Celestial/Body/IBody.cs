@@ -13,7 +13,7 @@ namespace Core.Celestial.Body
         Position Position { get; set; }
         List<Position> Positions { get; set; }
         Velocity Velocity { get; set; }
-        float Speed { get; set; }
+        float Speed { get; }
         void Move(float stepSize);
         void AddBehaviour(Behaviour.Behaviour behaviour);
     }

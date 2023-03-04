@@ -9,8 +9,8 @@ namespace Core.Celestial.Field
 {
     public class BaseField : IField
     {
-        //public static float Width { get { return 1200f; } }
-        //public static float Height { get { return 600f; } }
+        public float Width { get { return _width; } }
+        public float Height { get { return _height; } }
         public virtual IBody[] Bodies { get; protected set; }
         public bool BoidDisplayBySpeed { get; protected set; } = true;
 

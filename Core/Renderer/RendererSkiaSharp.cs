@@ -13,8 +13,9 @@ namespace Core.Renderer
         protected const float bodyRadius = 4f;
         protected readonly Color _backgroundColor = new Color(0, 0, 50);
         protected readonly Color _wallColor = new Color(255, 255, 255);
-        protected readonly Color _boidColor = new Color(250, 250, 227);
-        protected readonly Color _enemyColor = new Color(247, 175, 49);
+        protected readonly Color _planetColor = new Color(250, 250, 227);
+        protected readonly Color _sunColor = new Color(247, 175, 49);
+        protected readonly Color _gridColor = new Color(255, 255, 0);
         protected readonly SKCanvas _canvas;
         protected readonly SKPaint _paint;
 
@@ -88,14 +89,14 @@ namespace Core.Renderer
         protected void DrawTailBoid(IBody body, Color color, bool boidDispBySpeed = true)
         {
 
-            //for (var i = 0; i < body.Positions.Count; i++)
-            //{
-            //    var frac = (i + 1f) / body.Positions.Count;
-            //    var alpha = (byte)(255 * frac * .5);
-            //    FillCircle(new Point(body.Positions[i].X, body.Positions[i].Y),
-            //        body.Size / 2.5f,
-            //        new Color(color.R, color.G, color.B, alpha));
-            //}
+            for (var i = 0; i < body.Positions.Count; i++)
+            {
+                var frac = (i + 1f) / body.Positions.Count;
+                var alpha = (byte)(255 * frac * .5);
+                FillCircle(new Point(body.Positions[i].X, body.Positions[i].Y),
+                    body.Size / 2.5f,
+                    new Color(color.R, color.G, color.B, alpha));
+            }
 
             FillCircle(new Point(body.Position.X, body.Position.Y), body.Size, color);
             //if (boidDispBySpeed)

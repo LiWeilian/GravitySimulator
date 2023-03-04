@@ -16,15 +16,16 @@ namespace Core.Celestial.Body
         public Position Position { get; set; }
         public List<Position> Positions { get; set; } = new List<Position>();
         public Velocity Velocity { get; set; }
-        public float Speed { get; set; }
+        public float Speed { get { return Velocity.GetCurrentSpeed(); } }
 
         public Body(float posX, float posY, float mass, float size, float xVel, float yVel, float speed)
         {
             Position = new Position(posX, posY);
             Velocity = new Velocity(xVel, yVel);
+            Velocity *= speed;
             Mass = mass;
             Size = size;
-            Speed = speed;
+            
             _behaviours = new List<Behaviour.Behaviour>();
         }
         public void AddBehaviour(Behaviour.Behaviour behaviour)

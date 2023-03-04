@@ -18,10 +18,34 @@ namespace Core.Renderer
         {
             base.Render(field);
 
-            //DrawField();
+            DrawGrids(field);
             foreach (var body in field.Bodies)
             {
-                DrawTailBoid(body, _boidColor);
+                if (body.Mass > 1000)
+                {
+                    DrawTailBoid(body, _sunColor);
+                } else
+                {
+                    DrawTailBoid(body, _planetColor);
+                }
+            }
+        }
+
+        private void DrawGrids(IField field)
+        {
+            int size = 40;
+            int rowCount = (int)field.Height / size;
+            int colCount = (int)field.Width / size;
+
+            for (int i = 1; i < rowCount; i++)
+            {
+                DrawLine(new Point(0, i * size), new Point(field.Width, i * size), 1.0f, _gridColor);
+            }
+
+            for (int i = 1; i < colCount; i++)
+            {
+
+                DrawLine(new Point(i * size, 0), new Point(i * size, field.Height), 1.0f, _gridColor);
             }
         }
     }
