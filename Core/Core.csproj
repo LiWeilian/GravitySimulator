@@ -90,6 +90,8 @@
     <Compile Include="Celestial\Body\IBody.cs" />
     <Compile Include="Celestial\Field\BaseField.cs" />
     <Compile Include="Celestial\Field\IField.cs" />
+    <Compile Include="Celestial\Field\IGridField.cs" />
+    <Compile Include="Celestial\Field\IUniverseField.cs" />
     <Compile Include="Celestial\Field\UniverseField.cs" />
     <Compile Include="Celestial\Position.cs" />
     <Compile Include="Celestial\Velocity.cs" />

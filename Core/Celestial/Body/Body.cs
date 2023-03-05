@@ -10,7 +10,7 @@ namespace Core.Celestial.Body
     {
         private const int PositionsToRemember = 1000;
         private readonly List<Behaviour.Behaviour> _behaviours;
-
+        public string Id { get; }
         public float Mass { get; }
         public float Size { get; }
         public Position Position { get; set; }
@@ -20,6 +20,7 @@ namespace Core.Celestial.Body
 
         public Body(float posX, float posY, float mass, float size, float xVel, float yVel, float speed)
         {
+            Id = Guid.NewGuid().ToString();
             Position = new Position(posX, posY);
             Velocity = new Velocity(xVel, yVel);
             Velocity *= speed;

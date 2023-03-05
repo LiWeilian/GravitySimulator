@@ -33,11 +33,50 @@ namespace Main
         {
             _controller = new GravityController();
             _controller.CreateField(ResultField.Width, ResultField.Height);
-            //_controller.Field.SetFieldSize(BaseField.Width, BaseField.Height);
 
             _timer.Interval = TimeSpan.FromMilliseconds(10);
             _timer.Tick += TimerTick;
             _timer.Start();
+        }
+
+        private void ResultField_MouseClick(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    //add one sun
+                    _controller.AddSun(e.X, e.Y);
+                    break;
+                case MouseButtons.None:
+                    break;
+                case MouseButtons.Right:
+                    //add one planet
+                    _controller.AddPlanet(e.X, e.Y);
+                    break;
+                case MouseButtons.Middle:
+                    break;
+                case MouseButtons.XButton1:
+                    break;
+                case MouseButtons.XButton2:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void ResultField_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.R:
+                    _controller.CreateField(ResultField.Width, ResultField.Height);
+                    break;
+                case Keys.G:
+                    _controller.SWitchGridDrawState();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

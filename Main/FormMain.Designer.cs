@@ -34,6 +34,7 @@ namespace Main
             // 
             // ResultField
             // 
+            this.ResultField.Cursor = System.Windows.Forms.Cursors.Cross;
             this.ResultField.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ResultField.Location = new System.Drawing.Point(0, 0);
             this.ResultField.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -42,6 +43,8 @@ namespace Main
             this.ResultField.TabIndex = 4;
             this.ResultField.Text = "skControl1";
             this.ResultField.PaintSurface += new System.EventHandler<SkiaSharp.Views.Desktop.SKPaintSurfaceEventArgs>(this.SKElement_PaintSurface);
+            this.ResultField.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ResultField_KeyUp);
+            this.ResultField.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ResultField_MouseClick);
             // 
             // FormMain
             // 
@@ -53,6 +56,7 @@ namespace Main
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gravity";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Shown += new System.EventHandler(this.FormMain_Shown);
             this.ResumeLayout(false);
 

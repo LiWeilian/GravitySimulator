@@ -19,6 +19,10 @@ namespace Core.Renderer
             base.Render(field);
 
             DrawGrids(field);
+            if (field.Bodies.Length == 0)
+            {
+                return;
+            }
             foreach (var body in field.Bodies)
             {
                 if (body.Mass > 1000)
@@ -33,20 +37,24 @@ namespace Core.Renderer
 
         private void DrawGrids(IField field)
         {
-            int size = 40;
-            int rowCount = (int)field.Height / size;
-            int colCount = (int)field.Width / size;
-
-            for (int i = 1; i < rowCount; i++)
+            if (field is IGridField && (field as IGridField).DrawGrids)
             {
-                DrawLine(new Point(0, i * size), new Point(field.Width, i * size), 1.0f, _gridColor);
-            }
+                float size = (field as IGridField).GridSize;
+                int rowCount = (int)(field.Height / size);
+                int colCount = (int)(field.Width / size);
 
-            for (int i = 1; i < colCount; i++)
-            {
+                for (int i = 1; i < rowCount; i++)
+                {
+                    DrawLine(new Point(0, i * size), new Point(field.Width, i * size), 1.0f, _gridColor);
+                }
 
-                DrawLine(new Point(i * size, 0), new Point(i * size, field.Height), 1.0f, _gridColor);
+                for (int i = 1; i < colCount; i++)
+                {
+
+                    DrawLine(new Point(i * size, 0), new Point(i * size, field.Height), 1.0f, _gridColor);
+                }
             }
+            
         }
     }
 }

@@ -8,6 +8,7 @@ namespace Core.Celestial.Body
 {
     public interface IBody
     {
+        string Id { get; }
         float Mass { get; }
         float Size { get; }
         Position Position { get; set; }

@@ -22,5 +22,20 @@ namespace Core.Controller
         {
             Renderer = renderer;
         }
+
+        public void SWitchGridDrawState()
+        {
+            (Field as UniverseField).DrawGrids = !(Field as UniverseField).DrawGrids;
+        }
+
+        public void AddSun(float x, float y)
+        {
+            (Field as UniverseField).AddSun(x, y);
+        }
+
+        public void AddPlanet(float x, float y)
+        {
+            (Field as UniverseField).AddPlanet(x, y);
+        }
     }
 }
