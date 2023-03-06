@@ -25,7 +25,12 @@ namespace Core.Controller
 
         public void SWitchGridDrawState()
         {
-            (Field as UniverseField).DrawGrids = !(Field as UniverseField).DrawGrids;
+            (Field as IGridField).DrawGrids = !(Field as UniverseField).DrawGrids;
+        }
+
+        public void HasTail()
+        {
+            (Field as ITailField).DrawBodyTail = !((Field as ITailField).DrawBodyTail);
         }
 
         public void AddSun(float x, float y)

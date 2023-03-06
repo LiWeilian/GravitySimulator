@@ -86,9 +86,8 @@ namespace Core.Renderer
             DrawLine(p2, p3, size, color);
         }
 
-        protected void DrawTailBoid(IBody body, Color color, bool boidDispBySpeed = true)
+        protected void DrawTailBody(IBody body, Color color)
         {
-
             for (var i = 0; i < body.Positions.Count; i++)
             {
                 var frac = (i + 1f) / body.Positions.Count;
@@ -106,6 +105,11 @@ namespace Core.Renderer
             //{
             //    DrawTriangle(new Point(body.Position.X, body.Position.Y), body.Velocity.GetAngle(), 1.5f, body.Size, color);
             //}
+        }
+
+        protected void DrawBody(IBody body, Color color)
+        {
+            FillCircle(new Point(body.Position.X, body.Position.Y), body.Size, color);
         }
 
         protected SKColor ConvertColor(Color color)

@@ -10,7 +10,7 @@ namespace Core.Celestial.Behaviour
 {
     public class GravityBehaviour : Behaviour
     {
-        private const float G = 0.000067f;
+        private const float G = 0.00067f * 1f;
         public GravityBehaviour(IField field) : base(field)
         {
         }
@@ -21,10 +21,16 @@ namespace Core.Celestial.Behaviour
             foreach (var body in Field.Bodies)
             {
                 float distance = curBody.Position.Distance(body.Position);
-                if (distance > 0)
+                if (distance > body.Size + curBody.Size
+                    || (curBody.Mass / body.Mass < 0.001 && distance > (body.Size + curBody.Size) / 0.5f))
                 {
-                    float weight = (float)(G * body.Mass / Math.Pow(distance, 2.0)); //weight / curBody.Mass
-                    curBody.Velocity += (body.Position - curBody.Position) * weight;
+                    float gravity = (float)(G * body.Mass / Math.Pow(distance, 2.0));
+                    Position distPos = body.Position - curBody.Position;
+                    distPos /= distance;
+                    distPos *= gravity;
+                    curBody.Velocity += distPos;
+
+                    //curBody.Velocity += (body.Position - curBody.Position) * weight;
                 }
             }
         }

@@ -25,12 +25,26 @@ namespace Core.Renderer
             }
             foreach (var body in field.Bodies)
             {
-                if (body.Mass > 1000)
+                if (field is ITailField && !(field as ITailField).DrawBodyTail)
                 {
-                    DrawTailBoid(body, _sunColor);
+                    if (body.Mass > 1000)
+                    {
+                        DrawBody(body, _sunColor);
+                    }
+                    else
+                    {
+                        DrawBody(body, _planetColor);
+                    }
                 } else
                 {
-                    DrawTailBoid(body, _planetColor);
+                    if (body.Mass > 1000)
+                    {
+                        DrawTailBody(body, _sunColor);
+                    }
+                    else
+                    {
+                        DrawTailBody(body, _planetColor);
+                    }
                 }
             }
         }

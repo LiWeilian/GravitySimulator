@@ -74,6 +74,9 @@ namespace Main
                 case Keys.G:
                     _controller.SWitchGridDrawState();
                     break;
+                case Keys.T:
+                    _controller.HasTail();
+                    break;
                 default:
                     break;
             }

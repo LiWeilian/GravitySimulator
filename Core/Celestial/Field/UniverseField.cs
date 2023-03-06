@@ -9,9 +9,10 @@ using Core.Celestial.Body;
 
 namespace Core.Celestial.Field
 {
-    public class UniverseField : BaseField, IGridField, IUniverseField
+    public class UniverseField : BaseField, IGridField, IUniverseField, ITailField
     {
         public bool DrawGrids { get; set; } = false;
+        public bool DrawBodyTail { get; set; } = true;
         public float GridSize { get; set; } = 40;
         public UniverseField(float width, float height) : base(width, height)
         {
@@ -73,7 +74,11 @@ namespace Core.Celestial.Field
                 new GravityBehaviour(this)
             };
 
-            IBody sun = new Body.Body(posX: x, posY: y, mass: 10000, size: 10, xVel: 0f, yVel: 0f, speed: 0f);
+            Position position = new Position(x, y);
+            float mass = 100000f;
+            float size = 10f;
+            Velocity vel = new Velocity();
+            IBody sun = new Body.Body(mass: mass, size: size, position: position, vel: vel, speed: 0f);
             behaviours.ForEach(behaviour => sun.AddBehaviour(behaviour));
             List<IBody> bodies = Bodies.ToList();
             bodies.Add(sun);
@@ -88,14 +93,19 @@ namespace Core.Celestial.Field
             };
 
             Random rnd = new Random();
+
+            Position position = new Position(x, y);
+            float mass = (float)(1 + rnd.NextDouble() * 1.0f);
+            float size = (float)(2 + rnd.NextDouble() * 2.0f);
+            Velocity vel = new Velocity(0f, 0.5f);
+            float speed = (float)(1f + rnd.NextDouble() * 0.2f);
+
             IBody planet = new Body.Body(
-                    posX: x,
-                    posY: y,
-                    mass: (float)(1 + rnd.NextDouble() * 1.0f),
-                    size: (float)(2 + rnd.NextDouble() * 2.0f),
-                    xVel: 0f,
-                    yVel: 1f,
-                    speed: (float)(1f + rnd.NextDouble() * 0.2f));
+                    mass: mass,
+                    size: size,
+                    position: position,
+                    vel: vel,
+                    speed: speed);
 
             behaviours.ForEach(behaviour => planet.AddBehaviour(behaviour));
 

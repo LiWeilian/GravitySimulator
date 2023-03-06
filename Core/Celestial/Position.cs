@@ -46,5 +46,16 @@ namespace Core.Celestial
         {
             return new Position(pos.X * num, pos.Y * num);
         }
+
+        public static Position operator /(Position pos, float num)
+        {
+            if (num != 0)
+            {
+                return new Position(pos.X / num, pos.Y / num);
+            } else
+            {
+                return new Position(pos.X, pos.Y);
+            }
+        }
     }
 }

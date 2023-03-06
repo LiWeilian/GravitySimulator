@@ -18,11 +18,11 @@ namespace Core.Celestial.Body
         public Velocity Velocity { get; set; }
         public float Speed { get { return Velocity.GetCurrentSpeed(); } }
 
-        public Body(float posX, float posY, float mass, float size, float xVel, float yVel, float speed)
+        public Body(float mass, float size, Position position, Velocity vel, float speed)
         {
             Id = Guid.NewGuid().ToString();
-            Position = new Position(posX, posY);
-            Velocity = new Velocity(xVel, yVel);
+            Position = position;
+            Velocity = vel;
             Velocity *= speed;
             Mass = mass;
             Size = size;
