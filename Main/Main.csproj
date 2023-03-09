@@ -7,7 +7,7 @@
     <ProjectGuid>{4C822FA5-65FA-4B87-B9EA-84B04E13B3F9}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Main</RootNamespace>
-    <AssemblyName>Main</AssemblyName>
+    <AssemblyName>Gravity</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
