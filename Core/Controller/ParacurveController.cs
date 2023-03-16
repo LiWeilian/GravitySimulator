@@ -8,14 +8,14 @@ using Core.Renderer;
 
 namespace Core.Controller
 {
-    public class GravityController
+    public class ParacurveController
     {
         public IField Field { get; private set; }
         public IRenderer Renderer { get; private set; }
 
         public void CreateField(float width, float height)
         {
-            Field = new UniverseField(width, height);
+            Field = new ParacurveField(width, height);
         }
 
         public void CreateRenderer(IRenderer renderer)
@@ -33,14 +33,14 @@ namespace Core.Controller
             (Field as ITailField).DrawBodyTail = !((Field as ITailField).DrawBodyTail);
         }
 
-        public void AddSun(float x, float y)
+        public void Eject()
         {
-            (Field as UniverseField).AddSun(x, y);
+            (Field as ParacurveField).EjectObject();
         }
 
-        public void AddPlanet(float x, float y)
+        public void EjuectTo(float x, float y)
         {
-            (Field as UniverseField).AddPlanet(x, y);
+            (Field as ParacurveField).EjectObjectTo(x, y);
         }
     }
 }

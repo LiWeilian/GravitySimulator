@@ -2,6 +2,8 @@ Core/bin/
 Core/obj/
 Main/bin/
 Main/obj/
+Paracurve/bin/
+Paracurve/obj/
 packages/
 *.lock
 *.ide
